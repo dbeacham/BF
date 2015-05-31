@@ -1,0 +1,2433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface name="SportsAPING" owner="BDP" version="1.0.0" date="now()" namespace="com.betfair.sports.api"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>APING</description>
+    <operation name="listEventTypes" since="1.0.0">
+        <description>Returns a list of Event Types (i.e. Sports) associated with the markets selected by the
+            MarketFilter.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="filter" type="MarketFilter">
+                    <description>The filter to select desired markets. All markets that match the criteria in the filter
+                        are selected.
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the response. If not specified, the default is returned.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(EventTypeResult)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listCompetitions" since="1.0.0">
+        <description>Returns a list of Competitions (i.e., World Cup 2013) associated with the markets selected by the
+            MarketFilter. Currently only Football markets have an associated competition.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="filter" type="MarketFilter">
+                    <description>The filter to select desired markets. All markets that match the criteria in the filter
+                        are selected.
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the response. If not specified, the default is returned.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(CompetitionResult)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listTimeRanges" since="1.0.0">
+        <description>Returns a list of time ranges in the granularity specified in the request (i.e. 3PM to 4PM, Aug
+            14th to Aug 15th) associated with the markets selected by the MarketFilter.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="filter" type="MarketFilter">
+                    <description>The filter to select desired markets. All markets that match the criteria in the filter
+                        are selected.
+                    </description>
+                </parameter>
+                <parameter mandatory="true" name="granularity" type="TimeGranularity">
+                    <description>The granularity of time periods that correspond to markets selected by the market
+                        filter.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(TimeRangeResult)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listEvents" since="1.0.0">
+        <description>Returns a list of Events (i.e, Reading vs. Man United) associated with the markets selected by the
+            MarketFilter.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="filter" type="MarketFilter">
+                    <description>The filter to select desired markets. All markets that match the criteria in the filter
+                        are selected.
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the response. If not specified, the default is returned.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(EventResult)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listMarketTypes" since="1.0.0">
+        <description>Returns a list of market types (i.e. MATCH_ODDS, NEXT_GOAL) associated with the markets selected by
+            the MarketFilter. The market types are always the same, regardless of locale.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="filter" type="MarketFilter">
+                    <description>The filter to select desired markets. All markets that match the criteria in the filter
+                        are selected.
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the response. If not specified, the default is returned.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(MarketTypeResult)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listCountries" since="1.0.0">
+        <description>Returns a list of Countries associated with the markets selected by the MarketFilter.</description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="filter" type="MarketFilter">
+                    <description>The filter to select desired markets. All markets that match the criteria in the filter
+                        are selected.
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the response. If not specified, the default is returned.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(CountryCodeResult)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listVenues" since="1.0.0">
+        <description>Returns a list of Venues (i.e. Cheltenham, Ascot) associated with the markets selected by the
+            MarketFilter. Currently, only Horse Racing markets are associated with a Venue.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="filter" type="MarketFilter">
+                    <description>The filter to select desired markets. All markets that match the criteria in the filter
+                        are selected.
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the response. If not specified, the default is returned.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(VenueResult)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listMarketCatalogue" since="1.0.0">
+        <description>Returns a list of information about markets that does not change (or changes very rarely). You use
+            listMarketCatalogue to retrieve the name of the market, the names of selections and other information about
+            markets.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="filter" type="MarketFilter">
+                    <description>The filter to select desired markets. All markets that match the criteria in the filter
+                        are selected.
+                    </description>
+                </parameter>
+                <parameter name="marketProjection" type="set(MarketProjection)">
+                    <description>The type and amount of data returned about the market.</description>
+                </parameter>
+                <parameter name="sort" type="MarketSort">
+                    <description>The order of the results. Will default to RANK if not passed</description>
+                </parameter>
+                <parameter mandatory="true" name="maxResults" type="i32">
+                    <description>limit on the total number of results returned, must be greater than 0 and less than or
+                        equal to 1000
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the response. If not specified, the default is returned.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(MarketCatalogue)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listMarketBook" since="1.0.0">
+        <description>Returns a list of dynamic data about markets. Dynamic data includes prices, the status of the
+            market, the status of selections, the traded volume, and the status of any orders you have placed in the
+            market.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="marketIds" type="list(MarketId)">
+                    <description>One or more market ids. The number of markets returned depends on the amount of data
+                        you request via the price projection.
+                    </description>
+                </parameter>
+                <parameter name="priceProjection" type="PriceProjection">
+                    <description>The projection of price data you want to receive in the response.</description>
+                </parameter>
+                <parameter name="orderProjection" type="OrderProjection">
+                    <description>The orders you want to receive in the response.</description>
+                </parameter>
+                <parameter name="matchProjection" type="MatchProjection">
+                    <description>If you ask for orders, specifies the representation of matches.</description>
+                </parameter>
+                <parameter name="currencyCode" type="string">
+                    <description>A Betfair standard currency code. If not specified, the default currency code is
+                        used.
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the response. If not specified, the default is returned.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(MarketBook)">
+                <description>output data</description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listCurrentOrders" since="1.0.0">
+        <description>Returns a list of your current orders. Optionally you can filter and sort your current orders using
+            the
+            various parameters, setting none of the parameters will return all of your current orders, up to a maximum
+            of 1000 bets, ordered BY_BET and sorted
+            EARLIEST_TO_LATEST. To retrieve more than 1000 orders, you need to make use of the fromRecord and
+            recordCount parameters.
+        </description>
+        <parameters>
+            <request>
+                <parameter name="betIds" type="set(BetId)">
+                    <description>
+                        Optionally restricts the results to the specified bet IDs.
+                    </description>
+                </parameter>
+                <parameter name="marketIds" type="set(MarketId)">
+                    <description>
+                        Optionally restricts the results to the specified market IDs.
+                    </description>
+                </parameter>
+                <parameter name="orderProjection" type="OrderProjection">
+                    <description>
+                        Optionally restricts the results to the specified order status.
+                    </description>
+                </parameter>
+                <parameter name="placedDateRange" type="TimeRange">
+                    <description>
+                        @Deprecated use dateRange instead.
+                        Optionally restricts the results to be from/to the specified placed date. This date is
+                        inclusive, i.e. if
+                        an order was placed on exactly this date (to the millisecond) then it will be included in the
+                        results. If
+                        the from is later than the to, no results will be returned.
+                    </description>
+                </parameter>
+                <parameter name="dateRange" type="TimeRange">
+                    <description>
+                        Replacement for placedDateRange to allow filtering by other date fields rather than just placedDate.
+                        Optionally restricts the results to be from/to the specified date, these dates are contextual
+                        to the orders being returned and therefore the dates used to filter on will change to placed,
+                        matched, voided or settled dates depending on the orderBy. This date is inclusive, i.e. if
+                        an order was placed on exactly this date (to the millisecond) then it will be included in the
+                        results. If the from is later than the to, no results will be returned.
+                    </description>
+                </parameter>
+                <parameter name="orderBy" type="OrderBy">
+                    <description>
+                        Specifies how the results will be ordered. If no value is passed in, it defaults to BY_BET.
+                        Also acts as a filter such that only orders with a valid value in the field being ordered by will
+                        be returned (i.e. BY_VOID_TIME returns only voided orders, BY_SETTLED_TIME returns only settled
+                        orders and BY_MATCH_TIME returns only orders with a matched date (voided, settled, matched orders)).
+                    </description>
+                </parameter>
+                <parameter name="sortDir" type="SortDir">
+                    <description>
+                        Specifies the direction the results will be sorted in. If no value is passed in, it defaults to
+                        EARLIEST_TO_LATEST.
+                    </description>
+                </parameter>
+                <parameter name="fromRecord" type="i32">
+                    <description>
+                        Specifies the first record that will be returned. Records start at index zero, not at index one.
+                    </description>
+                </parameter>
+                <parameter name="recordCount" type="i32">
+                    <description>
+                        Specifies how many records will be returned, from the index position 'fromRecord'. Note that
+                        there is a
+                        page size limit of 1000. A value of zero indicates that you would like all records (including
+                        and
+                        from 'fromRecord') up to the limit.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="CurrentOrderSummaryReport">
+                <description></description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listClearedOrders" since="1.0.0">
+        <description>Returns a List of bets based on the bet status, ordered by settled date
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="betStatus" type="BetStatus">
+                    <description>
+                        Restricts the results to the specified status.
+                    </description>
+                </parameter>
+                <parameter name="eventTypeIds" type="set(EventTypeId)">
+                    <description>
+                        Optionally restricts the results to the specified Event Type IDs.
+                    </description>
+                </parameter>
+                <parameter name="eventIds" type="set(EventId)">
+                    <description>
+                        Optionally restricts the results to the specified Event IDs.
+                    </description>
+                </parameter>
+                <parameter name="marketIds" type="set(MarketId)">
+                    <description>
+                        Optionally restricts the results to the specified market IDs.
+                    </description>
+                </parameter>
+                <parameter name="runnerIds" type="set(RunnerId)">
+                    <description>
+                        Optionally restricts the results to the specified Runners.
+                    </description>
+                </parameter>
+                <parameter name="betIds" type="set(BetId)">
+                    <description>
+                        Optionally restricts the results to the specified bet IDs.
+                    </description>
+                </parameter>
+                <parameter name="side" type="Side">
+                    <description>
+                        Optionally restricts the results to the specified side.
+                    </description>
+                </parameter>
+                <parameter name="settledDateRange" type="TimeRange">
+                    <description>
+                        Optionally restricts the results to be from/to the specified settled date. This date is
+                        inclusive, i.e. if
+                        an order was placed on exactly this date (to the millisecond) then it will be included in the
+                        results. If
+                        the from is later than the to, no results will be returned.
+                    </description>
+                </parameter>
+                <parameter name="groupBy" type="GroupBy">
+                    <description>
+                        How to aggregate the lines, if not supplied then the lowest level is returned, i.e. bet by bet
+                        This is only applicable to SETTLED BetStatus.
+                    </description>
+                </parameter>
+                <parameter name="includeItemDescription" type="bool">
+                    <description>
+                        If true then an ItemDescription object is included in the response.
+                    </description>
+                </parameter>
+                <parameter name="locale" type="string">
+                    <description>The language used for the itemDescription. If not specified, the customer account
+                        default is returned.
+                    </description>
+                </parameter>
+                <parameter name="fromRecord" type="i32">
+                    <description>
+                        Specifies the first record that will be returned. Records start at index zero.
+                    </description>
+                </parameter>
+                <parameter name="recordCount" type="i32">
+                    <description>
+                        Specifies how many records will be returned, from the index position 'fromRecord'. Note that
+                        there is a
+                        page size limit of 1000. A value of zero indicates that you would like all records (including
+                        and
+                        from 'fromRecord') up to the limit.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="ClearedOrderSummaryReport">
+                <description></description>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+
+    <operation name="placeOrders" since="1.0.0">
+        <description>
+            Place new orders into market. LIMIT orders below the minimum bet size are allowed if
+            there is an unmatched bet at the same price in the market. This operation is atomic in that
+            all orders will be placed or none will be placed.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="marketId" type="MarketId">
+                    <description>The market id these orders are to be placed on</description>
+                </parameter>
+                <parameter mandatory="true" name="instructions" type="list(PlaceInstruction)">
+                    <description/>
+                </parameter>
+                <parameter name="customerRef" type="string">
+                    <description>
+                        Optional parameter allowing the client to pass a unique string (up to 32 chars) that
+                        is used to de-dupe mistaken re-submissions.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="PlaceExecutionReport">
+                <description/>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="cancelOrders" since="1.0.0">
+        <description>Cancel all bets OR cancel all bets on a market OR fully or partially cancel particular orders on a
+            market. Only LIMIT orders an be cancelled or partially cancelled once placed.
+        </description>
+        <parameters>
+            <request>
+                <parameter name="marketId" type="MarketId">
+                    <description>If not supplied all bets are cancelled</description>
+                </parameter>
+                <parameter name="instructions" type="list(CancelInstruction)">
+                    <description>All instructions need to be on the same market.
+                        If not supplied all bets on the market (if market id is passed) are fully cancelled
+                    </description>
+                </parameter>
+                <parameter name="customerRef" type="string">
+                    <description>
+                        Optional parameter allowing the client to pass a unique string (upto 32 chars) that
+                        is used to de-dupe mistaken re-submitions.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="CancelExecutionReport">
+                <description/>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="replaceOrders" since="1.0.0">
+        <description>
+            This operation is logically a bulk cancel followed by a bulk place. The cancel is completed first then
+            the new orders are placed. The new orders will be placed atomically in that they will all be placed or none
+            will be placed.
+            In the case where the new orders cannot be placed the cancellations will not be rolled back.
+            See ReplaceInstruction.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="marketId" type="MarketId">
+                    <description>The market id these orders are to be placed on</description>
+                </parameter>
+                <parameter mandatory="true" name="instructions" type="list(ReplaceInstruction)">
+                    <description/>
+                </parameter>
+                <parameter name="customerRef" type="string">
+                    <description>
+                        Optional parameter allowing the client to pass a unique string (up to 32 chars) that
+                        is used to de-dupe mistaken re-submissions.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="ReplaceExecutionReport">
+                <description/>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="updateOrders" since="1.0.0">
+        <description>Update non-exposure changing fields</description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="marketId" type="MarketId">
+                    <description>The market id these orders are to be placed on</description>
+                </parameter>
+                <parameter mandatory="true" name="instructions" type="list(UpdateInstruction)">
+                    <description/>
+                </parameter>
+                <parameter name="customerRef" type="string">
+                    <description>
+                        Optional parameter allowing the client to pass a unique string (up to 32 chars) that
+                        is used to de-dupe mistaken re-submissions.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="UpdateExecutionReport">
+                <description/>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <operation name="listMarketProfitAndLoss" since="1.0.0">
+        <description>
+            Retrieve profit and loss for a given list of markets. The values are calculated using matched bets and optionally settled bets.
+            Only odds markets are implemented, markets of other types are silently ignored.
+        </description>
+        <parameters>
+            <request>
+                <parameter mandatory="true" name="marketIds" type="set(MarketId)">
+                    <description>List of markets to calculate profit and loss</description>
+                </parameter>
+                <parameter mandatory="false" name="includeSettledBets" type="bool">
+                    <description>Option to include settled bets (partially settled markets only). Defaults to false if not specified.</description>
+                </parameter>
+                <parameter mandatory="false" name="includeBspBets" type="bool">
+                    <description>Option to include BSP bets. Defaults to false if not specified.</description>
+                </parameter>
+                <parameter mandatory="false" name="netOfCommission" type="bool">
+                    <description>
+                        Option to return profit and loss net of users current commission rate for this market including any special tariffs.
+                        Defaults to false if not specified.
+                    </description>
+                </parameter>
+            </request>
+            <simpleResponse type="list(MarketProfitAndLoss)">
+                <description/>
+            </simpleResponse>
+            <exceptions>
+                <exception type="APINGException">
+                    <description>Generic exception that is thrown if this operation fails for any reason.</description>
+                </exception>
+            </exceptions>
+        </parameters>
+    </operation>
+
+    <!-- Data types -->
+    <dataType name="MarketFilter">
+        <description>
+        </description>
+        <parameter name="textQuery" type="string">
+            <description>Restrict markets by any text associated with the market such as the Name, Event, Competition,
+                etc. You can include a wildcard (*) character as long as it is not the first character.
+            </description>
+        </parameter>
+        <parameter name="exchangeIds" type="set(ExchangeId)">
+            <description>Restrict markets by the Exchange where the market operates.
+                Note: This is not currently in use and only entities for the current exchange
+                will be returned.
+            </description>
+        </parameter>
+        <parameter name="eventTypeIds" type="set(EventTypeId)">
+            <description>Restrict markets by event type associated with the market. (i.e., Football, Hockey, etc)
+            </description>
+        </parameter>
+        <parameter name="eventIds" type="set(EventId)">
+            <description>Restrict markets by the event id associated with the market.</description>
+        </parameter>
+        <parameter name="competitionIds" type="set(CompetitionId)">
+            <description>Restrict markets by the competitions associated with the market.</description>
+        </parameter>
+        <parameter name="marketIds" type="set(MarketId)">
+            <description>Restrict markets by the market id associated with the market.</description>
+        </parameter>
+        <parameter name="venues" type="set(Venue)">
+            <description>Restrict markets by the venue associated with the market. Currently only Horse Racing markets
+                have venues.
+            </description>
+        </parameter>
+        <parameter name="bspOnly" type="bool">
+            <description>Restrict to bsp markets only, if True or non-bsp markets if False. If not specified then
+                returns both BSP and non-BSP markets
+            </description>
+        </parameter>
+        <parameter name="turnInPlayEnabled" type="bool">
+            <description>Restrict to markets that will turn in play if True or will not turn in play if false. If not
+                specified, returns both.
+            </description>
+        </parameter>
+        <parameter name="inPlayOnly" type="bool">
+            <description>Restrict to markets that will turn in play if True or will not turn in play if false. If not
+                specified, returns both.
+            </description>
+        </parameter>
+        <parameter name="marketBettingTypes" type="set(MarketBettingType)">
+            <description>Restrict to markets that match the betting type of the market (i.e. Odds, Asian Handicap
+                Singles, or Asian Handicap Doubles
+            </description>
+        </parameter>
+        <parameter name="marketCountries" type="set(CountryCode)">
+            <description>Restrict to markets that are in the specified country or countries</description>
+        </parameter>
+        <parameter name="marketTypeCodes" type="set(MarketType)">
+            <description>Restrict to markets that match the type of the market (i.e., MATCH_ODDS, HALF_TIME_SCORE). You
+                should use this instead of relying on the market name as the market type codes are the same in all
+                locales
+            </description>
+        </parameter>
+        <parameter name="marketStartTime" type="TimeRange">
+            <description>Restrict to markets with a market start time before or after the specified date</description>
+        </parameter>
+        <parameter name="withOrders" type="set(OrderStatus)">
+            <description>Restrict to markets that I have one or more orders in these status.
+            </description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketCatalogue">
+        <description>Information about a market</description>
+        <parameter mandatory="true" name="marketId" type="string">
+            <description>The unique identifier for the market</description>
+        </parameter>
+        <parameter mandatory="true" name="marketName" type="string">
+            <description>The name of the market</description>
+        </parameter>
+        <parameter name="marketStartTime" type="dateTime">
+            <description>The time this market starts at, only returned when the MARKET_START_TIME enum is passed in the
+                marketProjections
+            </description>
+        </parameter>
+        <parameter name="description" type="MarketDescription">
+            <description>Details about the market</description>
+        </parameter>
+        <parameter name="totalMatched" type="double">
+            <description>The total amount of money matched on the market. This value is truncated at 2dp.</description>
+        </parameter>
+        <parameter name="runners" type="list(RunnerCatalog)">
+            <description>The runners (selections) contained in the market</description>
+        </parameter>
+        <parameter name="eventType" type="EventType">
+            <description>The Event Type the market is contained within</description>
+        </parameter>
+        <parameter name="competition" type="Competition">
+            <description>The competition the market is contained within. Usually only applies to Football competitions
+            </description>
+        </parameter>
+        <parameter name="event" type="Event">
+            <description>The event the market is contained within</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketBook">
+        <description>The dynamic data in a market</description>
+        <parameter mandatory="true" name="marketId" type="string">
+            <description>The unique identifier for the market</description>
+        </parameter>
+
+        <parameter mandatory="true" name="isMarketDataDelayed" type="bool">
+            <description>True if the data returned by listMarketBook will be delayed. The data may be delayed because
+                you are not logged in with a funded account or you are using an Application Key that does not allow up
+                to date data.
+            </description>
+        </parameter>
+        <parameter name="status" type="string">
+            <description>The status of the market, for example ACTIVE, SUSPENDED, SETTLED, etc.</description>
+        </parameter>
+        <parameter name="betDelay" type="i32">
+            <description>The number of seconds an order is held until it is submitted into the market. Orders are
+                usually delayed when the market is in-play
+            </description>
+        </parameter>
+        <parameter name="bspReconciled" type="bool">
+            <description>True if the market starting price has been reconciled</description>
+        </parameter>
+        <parameter name="complete" type="bool">
+            <description/>
+        </parameter>
+        <parameter name="inplay" type="bool">
+            <description>True if the market is currently in play</description>
+        </parameter>
+        <parameter name="numberOfWinners" type="i32">
+            <description>The number of selections that could be settled as winners</description>
+        </parameter>
+        <parameter name="numberOfRunners" type="i32">
+            <description>The number of runners in the market</description>
+        </parameter>
+        <parameter name="numberOfActiveRunners" type="i32">
+            <description>The number of runners that are currently active. An active runner is a selection available for
+                betting
+            </description>
+        </parameter>
+        <parameter name="lastMatchTime" type="dateTime">
+            <description>The most recent time an order was executed</description>
+        </parameter>
+        <parameter name="totalMatched" type="double">
+            <description>The total amount matched. This value is truncated at 2dp.</description>
+        </parameter>
+        <parameter name="totalAvailable" type="double">
+            <description>The total amount of orders that remain unmatched. This value is truncated at 2dp.</description>
+        </parameter>
+        <parameter name="crossMatching" type="bool">
+            <description>True if cross matching is enabled for this market.</description>
+        </parameter>
+        <parameter name="runnersVoidable" type="bool">
+            <description>True if runners in the market can be voided</description>
+        </parameter>
+        <parameter name="version" type="i64">
+            <description>The version of the market. The version increments whenever the market status changes, for
+                example, turning in-play, or suspended when a goal score.
+            </description>
+        </parameter>
+
+        <parameter name="runners" type="list(Runner)">
+            <description>Information about the runners (selections) in the market.</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="RunnerCatalog">
+        <description>Information about the Runners (selections) in a market</description>
+        <parameter mandatory="true" name="selectionId" type="SelectionId">
+            <description>The unique id for the selection.</description>
+        </parameter>
+        <parameter name="runnerName" type="string" mandatory="true">
+            <description>The name of the runner</description>
+        </parameter>
+        <parameter mandatory="true" name="handicap" type="double">
+            <description>The handicap</description>
+        </parameter>
+        <parameter mandatory="true" name="sortPriority" type="i32">
+            <description>The sort priority of this runner</description>
+        </parameter>
+        <parameter name="metadata" type="map(string,string)">
+            <description>Metadata associated with the runner</description>
+        </parameter>
+    </dataType>
+
+
+    <dataType name="Runner">
+        <description>The dynamic data about runners in a market</description>
+        <parameter mandatory="true" name="selectionId" type="SelectionId">
+            <description>The unique id of the runner (selection)</description>
+        </parameter>
+        <parameter mandatory="true" name="handicap" type="double">
+            <description>The handicap</description>
+        </parameter>
+        <parameter mandatory="true" name="status" type="string">
+            <description>The status of the selection (i.e., ACTIVE, REMOVED, WINNER, LOSER)</description>
+        </parameter>
+        <parameter mandatory="true" name="adjustmentFactor" type="double">
+            <description>The adjustment factor applied if the selection is removed</description>
+        </parameter>
+        <parameter name="lastPriceTraded" type="double">
+            <description>The price of the most recent bet matched on this selection</description>
+        </parameter>
+        <parameter name="totalMatched" type="double">
+            <description>The total amount matched on this runner. This value is truncated at 2dp.</description>
+        </parameter>
+        <parameter name="removalDate" type="dateTime">
+            <description>If date and time the runner was removed</description>
+        </parameter>
+        <parameter name="sp" type="StartingPrices">
+            <description>The BSP related prices for this runner</description>
+        </parameter>
+        <parameter name="ex" type="ExchangePrices">
+            <description>The Exchange prices available for this runner</description>
+        </parameter>
+        <parameter name="orders" type="list(Order)">
+            <description>List of orders in the market</description>
+        </parameter>
+        <parameter name="matches" type="list(Match)">
+            <description>List of matches (i.e, orders that have been fully or partially executed)</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="StartingPrices">
+        <description>Information about the Betfair Starting Price. Only available in BSP markets</description>
+        <parameter name="nearPrice" type="double">
+            <description>What the starting price would be if the market was reconciled now taking into account the SP
+                bets as well as unmatched exchange bets on the same selection in the exchange.
+            </description>
+        </parameter>
+        <parameter name="farPrice" type="double">
+            <description>What the starting price would be if the market was reconciled now taking into account only the
+                currently place SP bets. The Far Price is not as complicated but not as accurate and only accounts for
+                money on the exchange at SP.
+            </description>
+        </parameter>
+        <parameter name="backStakeTaken" type="list(PriceSize)">
+            <description/>
+        </parameter>
+        <parameter name="layLiabilityTaken" type="list(PriceSize)">
+            <description/>
+        </parameter>
+        <parameter name="actualSP" type="double">
+            <description>The final BSP price for this runner. Only available for a BSP market that has been
+                reconciled.
+            </description>
+        </parameter>
+    </dataType>
+
+    <dataType name="ExchangePrices">
+        <description/>
+        <parameter name="availableToBack" type="list(PriceSize)">
+            <description/>
+        </parameter>
+        <parameter name="availableToLay" type="list(PriceSize)">
+            <description/>
+        </parameter>
+        <parameter name="tradedVolume" type="list(PriceSize)">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="Event">
+        <description>Event</description>
+        <parameter name="id" type="EventId">
+            <description>The unique id for the event</description>
+        </parameter>
+        <parameter name="name" type="string">
+            <description>The name of the event</description>
+        </parameter>
+        <parameter name="countryCode" type="CountryCode">
+            <description>countryCode</description>
+        </parameter>
+        <parameter name="timezone" type="string">
+            <description>timezone</description>
+        </parameter>
+        <parameter name="venue" type="string">
+            <description>venue</description>
+        </parameter>
+        <parameter name="openDate" type="dateTime">
+            <description>openDate</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="EventResult">
+        <description>Event Result</description>
+        <parameter name="event" type="Event">
+            <description>Event</description>
+        </parameter>
+        <parameter name="marketCount" type="i32">
+            <description>Count of markets associated with this event</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="Competition">
+        <description>Competition</description>
+        <parameter name="id" type="CompetitionId">
+            <description>id</description>
+        </parameter>
+        <parameter name="name" type="string">
+            <description>name</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="CompetitionResult">
+        <description>Competition Result</description>
+        <parameter name="competition" type="Competition">
+            <description>Competition</description>
+        </parameter>
+        <parameter name="marketCount" type="i32">
+            <description>Count of markets associated with this competition</description>
+        </parameter>
+        <parameter name="competitionRegion" type="string">
+            <description>Region in which this competition is happening</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="EventType">
+        <description>EventType</description>
+        <parameter name="id" type="EventTypeId">
+            <description>id</description>
+        </parameter>
+        <parameter name="name" type="string">
+            <description>name</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="EventTypeResult">
+        <description>EventType Result</description>
+        <parameter name="eventType" type="EventType">
+            <description>EventType</description>
+        </parameter>
+        <parameter name="marketCount" type="i32">
+            <description>Count of markets associated with this eventType</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketTypeResult">
+        <description>MarketType Result</description>
+        <parameter name="marketType" type="MarketType">
+            <description>Market Type</description>
+        </parameter>
+        <parameter name="marketCount" type="i32">
+            <description>Count of markets associated with this marketType</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="CountryCodeResult">
+        <description>CountryCode Result</description>
+        <parameter name="countryCode" type="CountryCode">
+            <description>Country Code</description>
+        </parameter>
+        <parameter name="marketCount" type="i32">
+            <description>Count of markets associated with this Country Code</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="VenueResult">
+        <description>Venue Result</description>
+        <parameter name="venue" type="Venue">
+            <description>Venue</description>
+        </parameter>
+        <parameter name="marketCount" type="i32">
+            <description>Count of markets associated with this Venue</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="TimeRange">
+        <description>TimeRange</description>
+        <parameter name="from" type="dateTime">
+            <description>from, format: ISO 8601)</description>
+        </parameter>
+        <parameter name="to" type="dateTime">
+            <description>to, format: ISO 8601</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="TimeRangeResult">
+        <description>TimeRange Result</description>
+        <parameter name="timeRange" type="TimeRange">
+            <description>TimeRange</description>
+        </parameter>
+        <parameter name="marketCount" type="i32">
+            <description>Count of markets associated with this TimeRange</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="Order">
+        <description/>
+        <parameter name="betId" type="BetId" mandatory="true">
+            <description/>
+        </parameter>
+        <parameter name="orderType" type="string" mandatory="true">
+            <description>BSP Order type.</description>
+        </parameter>
+        <parameter name="status" type="string" mandatory="true">
+            <description>Either EXECUTABLE (an unmatched amount remains) or EXECUTION_COMPLETE (no unmatched amount
+                remains).
+            </description>
+        </parameter>
+        <parameter name="persistenceType" type="string" mandatory="true">
+            <description>What to do with the order at turn-in-play</description>
+        </parameter>
+        <parameter name="side" type="string" mandatory="true">
+            <description/>
+        </parameter>
+        <parameter name="price" type="Price" mandatory="true">
+            <description>The price of the bet.</description>
+        </parameter>
+        <parameter name="size" type="Size" mandatory="true">
+            <description>The size of the bet.</description>
+        </parameter>
+        <parameter name="bspLiability" type="Size" mandatory="true">
+            <description>Not to be confused with size. This is the liability of a given BSP bet.</description>
+        </parameter>
+        <parameter name="placedDate" type="dateTime" mandatory="true">
+            <description>The date, to the second, the bet was placed.</description>
+        </parameter>
+        <parameter name="avgPriceMatched" type="Price">
+            <description>The average price matched at. Voided match fragments are removed from this average
+                calculation.
+            </description>
+        </parameter>
+        <parameter name="sizeMatched" type="Size">
+            <description>The current amount of this bet that was matched.</description>
+        </parameter>
+        <parameter name="sizeRemaining" type="Size">
+            <description>The current amount of this bet that is unmatched.</description>
+        </parameter>
+        <parameter name="sizeLapsed" type="Size">
+            <description>The current amount of this bet that was lapsed.</description>
+        </parameter>
+        <parameter name="sizeCancelled" type="Size">
+            <description>The current amount of this bet that was cancelled.</description>
+        </parameter>
+        <parameter name="sizeVoided" type="Size">
+            <description>The current amount of this bet that was voided.</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="Match">
+        <description>An individual bet Match, or rollup by price or avg price. Rollup
+            depends on the requested MatchProjection
+        </description>
+        <parameter name="betId" type="BetId">
+            <description>Only present if no rollup</description>
+        </parameter>
+        <parameter name="matchId" type="MatchId">
+            <description>Only present if no rollup</description>
+        </parameter>
+        <parameter name="side" type="string" mandatory="true">
+            <description/>
+        </parameter>
+        <parameter name="price" type="Price" mandatory="true">
+            <description>
+                Either actual match price or avg match price depending on rollup.
+            </description>
+        </parameter>
+        <parameter name="Size" type="Size" mandatory="true">
+            <description>Size matched at in this fragment, or at this price or avg price depending on rollup
+            </description>
+        </parameter>
+        <parameter name="matchDate" type="dateTime">
+            <description>Only present if no rollup</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketState">
+        <description>Market definition</description>
+        <parameter name="status" type="string" mandatory="true">
+            <description>marketStatus</description>
+        </parameter>
+        <parameter name="betDelay" type="i32" mandatory="true">
+            <description>betDelay</description>
+        </parameter>
+        <parameter name="bspReconciled" type="bool" mandatory="true">
+            <description>bspReconciled</description>
+        </parameter>
+        <parameter name="complete" type="bool" mandatory="true">
+            <description>complete</description>
+        </parameter>
+        <parameter name="inplay" type="bool" mandatory="true">
+            <description>inplay</description>
+        </parameter>
+        <parameter name="numberOfActiveRunners" type="i32" mandatory="true">
+            <description>numberActiveOfRunners</description>
+        </parameter>
+        <parameter name="lastMatchTime" type="dateTime" mandatory="true">
+            <description>lastMatchTime</description>
+        </parameter>
+        <parameter name="totalMatched" type="Size" mandatory="true">
+            <description/>
+        </parameter>
+        <parameter name="totalAvailable" type="Size" mandatory="true">
+            <description>Zero for closed markets</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketVersion">
+        <description>Market version</description>
+        <parameter name="version" type="i64">
+            <description>A non-monotonically increasing number indicating market changes</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketDescription">
+        <description>Market definition</description>
+        <parameter name="persistenceEnabled" type="bool" mandatory="true">
+            <description>persistenceMarket</description>
+        </parameter>
+        <parameter name="bspMarket" type="bool" mandatory="true">
+            <description>bspMarket</description>
+        </parameter>
+        <parameter name="marketTime" type="dateTime" mandatory="true">
+            <description>marketTime</description>
+        </parameter>
+        <parameter name="suspendTime" type="dateTime" mandatory="true">
+            <description>marketSuspendTime</description>
+        </parameter>
+        <parameter name="settleTime" type="dateTime">
+            <description>settled time</description>
+        </parameter>
+        <parameter name="bettingType" type="string" mandatory="true">
+            <description>bettingType</description>
+        </parameter>
+        <parameter name="turnInPlayEnabled" type="bool" mandatory="true">
+            <description>canTurnInPlay</description>
+        </parameter>
+        <parameter name="marketType" type="string" mandatory="true">
+            <description>market base type</description>
+        </parameter>
+        <parameter name="regulator" type="string" mandatory="true">
+            <description>the market regulator</description>
+        </parameter>
+        <parameter name="marketBaseRate" type="double" mandatory="true">
+            <description/>
+        </parameter>
+        <parameter name="discountAllowed" type="bool" mandatory="true">
+            <description/>
+        </parameter>
+        <parameter name="wallet" type="string">
+            <description/>
+        </parameter>
+        <parameter name="rules" type="string">
+            <description/>
+        </parameter>
+        <parameter name="rulesHasDate" type="bool">
+            <description/>
+        </parameter>
+        <parameter name="clarifications" type="string">
+            <description/>
+        </parameter>
+
+    </dataType>
+
+    <dataType name="MarketRates">
+        <description>Market Rates</description>
+        <parameter name="marketBaseRate" type="double" mandatory="true">
+            <description>marketBaseRate</description>
+        </parameter>
+        <parameter name="discountAllowed" type="bool" mandatory="true">
+            <description>discountAllowed</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketLicence">
+        <description>Market Licence</description>
+        <parameter name="wallet" type="string" mandatory="true">
+            <description>The wallet from which funds will be taken when betting on this market</description>
+        </parameter>
+        <parameter name="rules" type="string">
+            <description>The rules for this market</description>
+        </parameter>
+        <parameter name="rulesHasDate" type="bool">
+            <description>The market's start date and time are relevant to the rules.</description>
+        </parameter>
+        <parameter name="clarifications" type="string">
+            <description>Clarifications to the rules for the market</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketLineRangeInfo">
+        <description>Market Line and Range Info</description>
+        <parameter name="maxUnitValue" type="double" mandatory="true">
+            <description>maxPrice</description>
+        </parameter>
+        <parameter name="minUnitValue" type="double" mandatory="true">
+            <description>minPrice</description>
+        </parameter>
+        <parameter name="interval" type="double" mandatory="true">
+            <description>interval</description>
+        </parameter>
+        <parameter name="marketUnit" type="string" mandatory="true">
+            <description>unit</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="PriceSize">
+        <description/>
+        <parameter name="price" type="Price" mandatory="true">
+            <description/>
+        </parameter>
+        <parameter name="size" type="Size" mandatory="true">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="CurrentOrderSummaryReport">
+        <description>A container representing search results.</description>
+        <parameter name="currentOrders" type="list(CurrentOrderSummary)" mandatory="true">
+            <description>
+                The list of current orders returned by your query. This will be a valid list (i.e. empty or non-empty
+                but never 'null').
+            </description>
+        </parameter>
+        <parameter name="moreAvailable" type="bool" mandatory="true">
+            <description>
+                Indicates whether there are further result items beyond this page. Note that underlying data
+                is highly time-dependent and the subsequent search orders query might return an empty result.
+            </description>
+        </parameter>
+    </dataType>
+
+    <dataType name="CurrentOrderSummary">
+        <description>Summary of a current order.</description>
+        <parameter name="betId" type="BetId" mandatory="true">
+            <description>The bet ID of the original place order.</description>
+        </parameter>
+        <parameter name="marketId" type="MarketId" mandatory="true">
+            <description>The market id the order is for.</description>
+        </parameter>
+        <parameter name="selectionId" type="SelectionId" mandatory="true">
+            <description>The selection id the order is for.</description>
+        </parameter>
+        <parameter name="handicap" type="Handicap" mandatory="true">
+            <description>The handicap of the bet.</description>
+        </parameter>
+        <parameter name="priceSize" type="PriceSize" mandatory="true">
+            <description>The price and size of the bet.</description>
+        </parameter>
+        <parameter name="bspLiability" type="Size" mandatory="true">
+            <description>Not to be confused with size. This is the liability of a given BSP bet.</description>
+        </parameter>
+        <parameter name="side" type="string" mandatory="true">
+            <description>BACK/LAY</description>
+        </parameter>
+        <parameter name="status" type="string" mandatory="true">
+            <description>Either EXECUTABLE (an unmatched amount remains) or EXECUTION_COMPLETE (no unmatched amount
+                remains).
+            </description>
+        </parameter>
+        <parameter name="persistenceType" type="string" mandatory="true">
+            <description>What to do with the order at turn-in-play.</description>
+        </parameter>
+        <parameter name="orderType" type="string" mandatory="true">
+            <description>BSP Order type.</description>
+        </parameter>
+        <parameter name="placedDate" type="dateTime" mandatory="true">
+            <description>The date, to the second, the bet was placed.</description>
+        </parameter>
+        <parameter name="matchedDate" type="dateTime" mandatory="true">
+            <description>The date, to the second, of the last matched bet fragment (where applicable).</description>
+        </parameter>
+        <parameter name="averagePriceMatched" type="Price">
+            <description>The average price matched at. Voided match fragments are removed from this average
+                calculation.
+            </description>
+        </parameter>
+        <parameter name="sizeMatched" type="Size">
+            <description>The current amount of this bet that was matched.</description>
+        </parameter>
+        <parameter name="sizeRemaining" type="Size">
+            <description>The current amount of this bet that is unmatched.</description>
+        </parameter>
+        <parameter name="sizeLapsed" type="Size">
+            <description>The current amount of this bet that was lapsed.</description>
+        </parameter>
+        <parameter name="sizeCancelled" type="Size">
+            <description>The current amount of this bet that was cancelled.</description>
+        </parameter>
+        <parameter name="sizeVoided" type="Size">
+            <description>The current amount of this bet that was voided.</description>
+        </parameter>
+        <parameter name="regulatorAuthCode" type="string">
+            <description>The regulator authorisation code.</description>
+        </parameter>
+        <parameter name="regulatorCode" type="string">
+            <description>The regulator Code.</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="ClearedOrderSummary">
+        <description>Summary of a cleared order.</description>
+        <parameter name="eventTypeId" type="EventTypeId">
+            <description>The id of the event type bet on. Available at EVENT_TYPE groupBy level or lower.</description>
+        </parameter>
+        <parameter name="eventId" type="EventId">
+            <description>The id of the event bet on. Available at EVENT groupBy level or lower.</description>
+        </parameter>
+        <parameter name="marketId" type="MarketId">
+            <description>The id of the market bet on. Available at MARKET groupBy level or lower.</description>
+        </parameter>
+        <parameter name="selectionId" type="SelectionId">
+            <description>The id of the selection bet on. Available at RUNNER groupBy level or lower.</description>
+        </parameter>
+        <parameter name="handicap" type="Handicap">
+            <description>The id of the market bet on. Available at MARKET groupBy level or lower.</description>
+        </parameter>
+        <parameter name="betId" type="BetId">
+            <description>The id of the bet. Available at BET groupBy level.</description>
+        </parameter>
+        <parameter name="placedDate" type="dateTime">
+            <description>The date the bet order was placed by the customer. Only available at BET groupBy level.
+            </description>
+        </parameter>
+        <parameter name="persistenceType" type="string">
+            <description>
+                The turn in play persistence state of the order at bet placement time.
+                This field will be empty or omitted on true SP bets. Only available at BET groupBy level.
+            </description>
+        </parameter>
+        <parameter name="orderType" type="string">
+            <description>The type of bet (e.g standard limited-liability Exchange bet (LIMIT), a standard BSP bet
+                (MARKET_ON_CLOSE), or a minimum-accepted-price BSP bet (LIMIT_ON_CLOSE)). If the bet has a OrderType of
+                MARKET_ON_CLOSE and a persistenceType of MARKET_ON_CLOSE then it is a bet which has transitioned from
+                LIMIT to MARKET_ON_CLOSE. Only available at BET groupBy level.
+            </description>
+        </parameter>
+        <parameter name="side" type="string">
+            <description>Whether the bet was a back or lay bet. Available at SIDE groupBy level or lower.</description>
+        </parameter>
+        <parameter name="itemDescription" type="ItemDescription">
+            <description>A container for all the anciliary data and localised text valid for this Item</description>
+        </parameter>
+        <parameter name="priceRequested" type="Price">
+            <description>The average requested price across all settled bet orders under this Item. Available at SIDE
+                groupBy level or lower.
+            </description>
+        </parameter>
+        <parameter name="settledDate" type="dateTime">
+            <description>The date and time the bet order was settled by Betfair. Available at SIDE groupBy level or
+                lower.
+            </description>
+        </parameter>
+        <!--specific to settled/voided bets-->
+        <parameter name="betCount" type="i32">
+            <description>The number of actual bets within this grouping (will be 1 for BET groupBy)</description>
+        </parameter>
+        <parameter name="commission" type="Size">
+            <description>The cumulative amount of commission paid by the customer across all bets under this Item, in
+                the account currency. Available at EXCHANGE, EVENT_TYPE, EVENT and MARKET level groupings only.
+            </description>
+        </parameter>
+        <parameter name="priceMatched" type="Price">
+            <description>The average matched price across all settled bets or bet fragments under this Item. Available
+                at SIDE groupBy level or lower.
+            </description>
+        </parameter>
+        <parameter name="priceReduced" type="bool">
+            <description>If true, then the matched price was affected by a reduction factor due to of a runner removal
+                from this Horse Racing market.
+            </description>
+        </parameter>
+        <parameter name="sizeSettled" type="Size">
+            <description>The cumulative bet size that was settled as matched or voided under this Item, in the account
+                currency. Available at SIDE groupBy level or lower.
+            </description>
+        </parameter>
+        <parameter name="profit" type="Size">
+            <description>The profit or loss (negative profit) gained on this line, in the account currency</description>
+        </parameter>
+        <!--specific to cancelled bets-->
+        <parameter name="sizeCancelled" type="Size">
+            <description>The amount of the bet that was available to be matched, before cancellation or lapsing, in the
+                account currency
+            </description>
+        </parameter>
+    </dataType>
+
+    <dataType name="ClearedOrderSummaryReport">
+        <description>A container representing search results.</description>
+        <parameter name="clearedOrders" type="list(ClearedOrderSummary)" mandatory="true">
+            <description>
+                The list of cleared orders returned by your query. This will be a valid list (i.e. empty or non-empty
+                but never 'null').
+            </description>
+        </parameter>
+        <parameter name="moreAvailable" type="bool" mandatory="true">
+            <description>
+                Indicates whether there are further result items beyond this page. Note that underlying data
+                is highly time-dependent and the subsequent search orders query might return an empty result.
+            </description>
+        </parameter>
+    </dataType>
+
+    <dataType name="ItemDescription">
+        <description>This object contains some text which may be useful to render a betting history view. It offers no
+            long-term warranty as to the correctness of the text.
+        </description>
+        <parameter name="eventTypeDesc" type="string">
+            <description>The event type name, translated into the requested locale. Available at EVENT_TYPE groupBy or
+                lower.
+            </description>
+        </parameter>
+        <parameter name="eventDesc" type="string">
+            <description>The eventName, or openDate + venue, translated into the requested locale. Available at EVENT
+                groupBy or lower.
+            </description>
+        </parameter>
+        <parameter name="marketDesc" type="string">
+            <description>The market name or racing market type ("Win", "To Be Placed (2 places)", "To Be Placed (5
+                places)" etc) translated into the requested locale. Available at MARKET groupBy or lower.
+            </description>
+        </parameter>
+        <parameter name="marketStartTime" type="dateTime">
+            <description>The start time of the market (in ISO-8601 format, not translated). Available at MARKET groupBy
+                or lower.
+            </description>
+        </parameter>
+        <parameter name="runnerDesc" type="string">
+            <description>The runner name, maybe including the handicap, translated into the requested locale. Available
+                at BET groupBy.
+            </description>
+        </parameter>
+        <parameter name="numberOfWinners" type="i32">
+            <description>The numberOfWinners on a market. Available at BET groupBy.</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="RunnerId">
+        <description>This object contains the unique identifier for a runner</description>
+        <parameter name="marketId" type="MarketId" mandatory="true">
+            <description>The id of the market bet on</description>
+        </parameter>
+        <parameter name="selectionId" type="SelectionId" mandatory="true">
+            <description>The id of the selection bet on</description>
+        </parameter>
+        <parameter name="handicap" type="Handicap">
+            <description>The handicap associated with the runner in case of asian handicap markets, null otherwise.
+            </description>
+        </parameter>
+    </dataType>
+
+    <!-- betting data types -->
+    <dataType name="PlaceInstruction">
+        <description>Instruction to place a new order</description>
+        <parameter mandatory="true" name="orderType" type="OrderType">
+            <description/>
+        </parameter>
+        <parameter mandatory="true" name="selectionId" type="SelectionId">
+            <description>The selection_id.</description>
+        </parameter>
+        <parameter name="handicap" type="Handicap">
+            <description>The handicap applied to the selection, if on an asian-style market.</description>
+        </parameter>
+        <parameter mandatory="true" name="side" type="Side">
+            <description>Back or Lay</description>
+        </parameter>
+        <parameter type="LimitOrder" name="limitOrder">
+            <description/>
+        </parameter>
+        <parameter type="LimitOnCloseOrder" name="limitOnCloseOrder">
+            <description/>
+        </parameter>
+        <parameter type="MarketOnCloseOrder" name="marketOnCloseOrder">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="PlaceExecutionReport">
+        <description/>
+        <parameter name="customerRef" type="string">
+            <description>
+                Echo of the customerRef if passed.
+            </description>
+        </parameter>
+        <parameter mandatory="true" type="string" name="status">
+            <description/>
+        </parameter>
+        <parameter type="string" name="errorCode">
+            <description/>
+        </parameter>
+        <parameter type="MarketId" name="marketId">
+            <description>Echo of marketId passed</description>
+        </parameter>
+        <parameter type="list(PlaceInstructionReport)" name="instructionReports">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="LimitOrder">
+        <description>Place a new LIMIT order (simple exchange bet for immediate execution)</description>
+        <parameter mandatory="true" name="size" type="Size">
+            <description>The size of the bet.</description>
+        </parameter>
+        <parameter mandatory="true" name="price" type="Price">
+            <description>The limit price</description>
+        </parameter>
+        <parameter mandatory="true" name="persistenceType" type="PersistenceType">
+            <description>What to do with the order at turn-in-play</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="LimitOnCloseOrder">
+        <description>Place a new LIMIT_ON_CLOSE bet</description>
+        <parameter mandatory="true" name="liability" type="Size">
+            <description>The size of the bet.</description>
+        </parameter>
+        <parameter mandatory="true" name="price" type="Price">
+            <description>The limit price of the bet if LOC</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketOnCloseOrder">
+        <description>Place a new MARKET_ON_CLOSE bet</description>
+        <parameter mandatory="true" name="liability" type="Size">
+            <description>The size of the bet.</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="PlaceInstructionReport">
+        <description>Response to a PlaceInstruction</description>
+        <parameter mandatory="true" name="status" type="string">
+            <description>whether the command succeeded or failed</description>
+        </parameter>
+        <parameter name="errorCode" type="string">
+            <description>cause of failure, or null if command succeeds</description>
+        </parameter>
+        <parameter mandatory="true" type="PlaceInstruction" name="instruction">
+            <description>The instruction that was requested</description>
+        </parameter>
+        <parameter name="betId" type="string">
+            <description>The bet ID of the new bet. May be null on failure.</description>
+        </parameter>
+        <parameter name="placedDate" type="dateTime">
+            <description/>
+        </parameter>
+        <parameter name="averagePriceMatched" type="Price">
+            <description/>
+        </parameter>
+        <parameter name="sizeMatched" type="Size">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="CancelInstruction">
+        <description>Instruction to fully or partially cancel an order (only applies to LIMIT orders)</description>
+        <parameter mandatory="true" name="betId" type="string">
+            <description/>
+        </parameter>
+        <parameter name="sizeReduction" type="Size">
+            <description>If supplied then this is a partial cancel</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="CancelExecutionReport">
+        <description/>
+        <parameter name="customerRef" type="string">
+            <description>
+                Echo of the customerRef if passed.
+            </description>
+        </parameter>
+        <parameter mandatory="true" type="string" name="status">
+            <description/>
+        </parameter>
+        <parameter type="string" name="errorCode">
+            <description/>
+        </parameter>
+        <parameter type="MarketId" name="marketId">
+            <description>Echo of marketId passed</description>
+        </parameter>
+        <parameter type="list(CancelInstructionReport)" name="instructionReports">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="ReplaceInstruction">
+        <description>Instruction to replace a LIMIT or LIMIT_ON_CLOSE order at a new price. Original order will be
+            cancelled
+            and a new order placed at the new price for the remaining stake.
+        </description>
+        <parameter mandatory="true" name="betId" type="string">
+            <description/>
+        </parameter>
+        <parameter mandatory="true" name="newPrice" type="Price">
+            <description>The price to replace the bet at</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="ReplaceExecutionReport">
+        <description/>
+        <parameter name="customerRef" type="string">
+            <description>
+                Echo of the customerRef if passed.
+            </description>
+        </parameter>
+        <parameter mandatory="true" type="string" name="status">
+            <description/>
+        </parameter>
+        <parameter type="string" name="errorCode">
+            <description/>
+        </parameter>
+        <parameter type="MarketId" name="marketId">
+            <description>Echo of marketId passed</description>
+        </parameter>
+        <parameter type="list(ReplaceInstructionReport)" name="instructionReports">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="ReplaceInstructionReport">
+        <description/>
+        <parameter mandatory="true" name="status" type="string">
+            <description>whether the command succeeded or failed</description>
+        </parameter>
+        <parameter name="errorCode" type="string">
+            <description>cause of failure, or null if command succeeds</description>
+        </parameter>
+        <parameter name="cancelInstructionReport" type="CancelInstructionReport">
+            <description>Cancelation report for the original order</description>
+        </parameter>
+        <parameter name="placeInstructionReport" type="PlaceInstructionReport">
+            <description>Placement report for the new order</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="CancelInstructionReport">
+        <description/>
+        <parameter mandatory="true" name="status" type="string">
+            <description>whether the command succeeded or failed</description>
+        </parameter>
+        <parameter name="errorCode" type="string">
+            <description>cause of failure, or null if command succeeds</description>
+        </parameter>
+        <parameter type="CancelInstruction" name="instruction">
+            <description>The instruction that was requested</description>
+        </parameter>
+        <parameter mandatory="true" name="sizeCancelled" type="Size">
+            <description/>
+        </parameter>
+        <parameter mandatory="true" name="cancelledDate" type="dateTime">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="UpdateInstruction">
+        <description>Instruction to update LIMIT bet's persistence of an order that do not affect exposure</description>
+        <parameter mandatory="true" name="betId" type="string">
+            <description/>
+        </parameter>
+        <parameter mandatory="true" name="newPersistenceType" type="PersistenceType">
+            <description>The new persistence type to update this bet to</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="UpdateExecutionReport">
+        <description/>
+        <parameter name="customerRef" type="string">
+            <description>
+                Echo of the customerRef if passed.
+            </description>
+        </parameter>
+        <parameter mandatory="true" type="string" name="status">
+            <description/>
+        </parameter>
+        <parameter type="string" name="errorCode">
+            <description/>
+        </parameter>
+        <parameter type="MarketId" name="marketId">
+            <description>Echo of marketId passed</description>
+        </parameter>
+        <parameter type="list(UpdateInstructionReport)" name="instructionReports">
+            <description/>
+        </parameter>
+    </dataType>
+
+    <dataType name="UpdateInstructionReport">
+        <description/>
+        <parameter mandatory="true" name="status" type="string">
+            <description>whether the command succeeded or failed</description>
+        </parameter>
+        <parameter name="errorCode" type="string">
+            <description>cause of failure, or null if command succeeds</description>
+        </parameter>
+        <parameter mandatory="true" name="instruction" type="UpdateInstruction">
+            <description>The instruction that was requested</description>
+        </parameter>
+    </dataType>
+
+    <dataType name="PriceProjection">
+        <description>
+            Selection criteria of the returning price data
+        </description>
+        <parameter name="priceData" type="set(PriceData)">
+            <description>
+                The basic price data you want to receive in the response.
+            </description>
+        </parameter>
+        <parameter name="exBestOffersOverrides" type="ExBestOffersOverrides">
+            <description>
+                Options to alter the default representation of best offer prices
+                Applicable to EX_BEST_OFFERS priceData selection
+            </description>
+        </parameter>
+        <parameter name="virtualise" type="bool">
+            <description>
+                Indicates if the returned prices should include virtual prices.
+                Applicable to EX_BEST_OFFERS and EX_ALL_OFFERS priceData selections, default value is false.
+            </description>
+        </parameter>
+        <parameter name="rolloverStakes" type="bool">
+            <description>
+                Indicates if the volume returned at each price point should be the absolute value or a
+                cumulative sum of volumes available at the price and all better prices.
+                If unspecified defaults to false.
+                Applicable to EX_BEST_OFFERS and EX_ALL_OFFERS price projections.
+                Not supported as yet.
+            </description>
+        </parameter>
+    </dataType>
+
+    <dataType name="ExBestOffersOverrides">
+        <description>
+            Options to alter the default representation of best offer prices
+        </description>
+        <parameter name="bestPricesDepth" type="i32">
+            <description>
+                The maximum number of prices to return on each side for each runner.
+                If unspecified defaults to 3.
+            </description>
+        </parameter>
+        <parameter name="rollupModel" type="RollupModel">
+            <description>
+                The model to use when rolling up available sizes.
+                If unspecified defaults to STAKE rollup model with rollupLimit of
+                minimum stake in the specified currency.
+            </description>
+        </parameter>
+        <parameter name="rollupLimit" type="i32">
+            <description>
+                The volume limit to use when rolling up returned sizes. The exact
+                definition of the limit depends on the rollupModel. If no limit is provided it
+                will use minimum stake as default the value. Ignored if no rollup model is specified.
+            </description>
+        </parameter>
+        <parameter name="rollupLiabilityThreshold" type="double">
+            <description>
+                Only applicable when rollupModel is MANAGED_LIABILITY.
+                The rollup model switches from being stake based to liability based
+                at the smallest lay price which is >= rollupLiabilityThreshold.service level default (TBD).
+                Not supported as yet.
+            </description>
+        </parameter>
+        <parameter name="rollupLiabilityFactor" type="i32">
+            <description>
+                Only applicable when rollupModel is MANAGED_LIABILITY.
+                (rollupLiabilityFactor * rollupLimit) is the minimum liabilty the
+                user is deemed to be comfortable with. After the rollupLiabilityThreshold
+                price subsequent volumes will be rolled up to minimum value
+                such that the liability >= the minimum liability.service level default (5).
+                Not supported as yet.
+            </description>
+        </parameter>
+    </dataType>
+
+    <dataType name="MarketProfitAndLoss">
+        <description>Profit and loss in a market</description>
+        <parameter name="marketId" type="string">
+            <description>The unique identifier for the market</description>
+        </parameter>
+        <parameter name="commissionApplied" type="double">
+            <description>
+                The commission rate applied to P&amp;L values. Only returned if netOfCommision option is requested
+            </description>
+        </parameter>
+        <parameter name="profitAndLosses" type="list(RunnerProfitAndLoss)">
+            <description>
+                Calculated profit and loss data.
+            </description>
+        </parameter>
+    </dataType>
+
+    <dataType name="RunnerProfitAndLoss">
+        <description>Profit and loss if selection is wins or loses</description>
+        <parameter name="selectionId" type="SelectionId">
+            <description>The unique identifier for the selection</description>
+        </parameter>
+        <parameter name="ifWin" type="double">
+            <description>
+                Profit and loss for the market if this selection is the winner
+            </description>
+        </parameter>
+        <parameter name="ifLose" type="double">
+            <description>
+                Profit and loss for the market if this selection is the loser. Only returned for multi-winner odds markets.
+            </description>
+        </parameter>
+        <parameter name="ifPlace" type="double">
+            <description>
+                Profit and loss for the market if this selection is placed
+            </description>
+        </parameter>
+    </dataType>
+
+    <exceptionType name="APINGException" prefix="ANGX">
+        <description>This exception is thrown when an operation fails</description>
+        <parameter name="errorCode" type="string">
+            <description>the unique code for this error</description>
+            <validValues>
+                <value id="1" name="TOO_MUCH_DATA">
+                    <description>The operation requested too much data</description>
+                </value>
+                <value id="2" name="INVALID_INPUT_DATA">
+                    <description>Invalid input data</description>
+                </value>
+                <value id="3" name="INVALID_SESSION_INFORMATION">
+                    <description>The session token passed is invalid</description>
+                </value>
+                <value id="4" name="NO_APP_KEY">
+                    <description>An application key is required for this operation</description>
+                </value>
+                <value id="5" name="NO_SESSION">
+                    <description>A session token is required for this operation</description>
+                </value>
+                <value id="6" name="UNEXPECTED_ERROR">
+                    <description>An unexpected internal error occurred that prevented successful request processing.
+                    </description>
+                </value>
+                <value id="7" name="INVALID_APP_KEY">
+                    <description>The application key passed is invalid</description>
+                </value>
+                <value id="8" name="TOO_MANY_REQUESTS">
+                    <description>There are too many pending requests</description>
+                </value>
+                <value id="9" name="SERVICE_BUSY">
+                    <description>The service is currently too busy to service this request</description>
+                </value>
+                <value id="10" name="TIMEOUT_ERROR">
+                    <description>Internal call to downstream service timed out</description>
+                </value>
+                <value id="11" name="APP_KEY_CREATION_FAILED">
+                    <description>The application key creation has failed</description>
+                </value>
+                <value id="12" name="DUPLICATE_APP_NAME">
+                    <description>The application name specified already exists</description>
+                </value>
+                <value id="13" name="APP_CREATION_FAILED">
+                    <description>The application name specified is too long</description>
+                </value>
+                <value id="14" name="REQUEST_SIZE_EXCEEDS_LIMIT">
+                    <description>The request has exceeded the maximum allowed size</description>
+                </value>
+                <value id="15" name="ACCESS_DENIED">
+                    <description>The access to this functionality is not allowed</description>
+                </value>
+            </validValues>
+        </parameter>
+        <parameter name="errorDetails" type="string">
+            <description>the stack trace of the error</description>
+        </parameter>
+        <parameter name="requestUUID" type="string">
+            <description/>
+        </parameter>
+    </exceptionType>
+
+    <simpleType name="MarketProjection" type="string">
+        <validValues>
+            <value name="COMPETITION">
+                <description>If not selected then the competition will not be returned with marketCatalogue
+                </description>
+            </value>
+            <value name="EVENT">
+                <description>If not selected then the event will not be returned with marketCatalogue</description>
+            </value>
+            <value name="EVENT_TYPE">
+                <description>If not selected then the eventType will not be returned with marketCatalogue</description>
+            </value>
+            <value name="MARKET_START_TIME">
+                <description>If not selected then the start time will not be returned with marketCatalogue
+                </description>
+            </value>
+            <value name="MARKET_DESCRIPTION">
+                <description>If not selected then the description will not be returned with marketCatalogue
+                </description>
+            </value>
+            <value name="RUNNER_DESCRIPTION">
+                <description>If not selected then the runners will not be returned with marketCatalogue</description>
+            </value>
+            <value name="RUNNER_METADATA">
+                <description>If not selected then the runner metadata will not be returned with marketCatalogue. If
+                    selected then RUNNER_DESCRIPTION will also be returned regardless of whether it is included as a
+                    market projection.
+                </description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="PriceData" type="string">
+        <validValues>
+            <value name="SP_AVAILABLE">
+                <description/>
+            </value>
+            <value name="SP_TRADED">
+                <description/>
+            </value>
+            <value name="EX_BEST_OFFERS">
+                <description/>
+            </value>
+            <value name="EX_ALL_OFFERS">
+                <description>EX_ALL_OFFERS trumps EX_BEST_OFFERS if both settings are present</description>
+            </value>
+            <value name="EX_TRADED">
+                <description/>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="MatchProjection" type="string">
+        <validValues>
+            <value name="NO_ROLLUP">
+                <description/>
+            </value>
+            <value name="ROLLED_UP_BY_PRICE">
+                <description/>
+            </value>
+            <value name="ROLLED_UP_BY_AVG_PRICE">
+                <description/>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="OrderProjection" type="string">
+        <validValues>
+            <value name="ALL">
+                <description/>
+            </value>
+            <value name="EXECUTABLE">
+                <description/>
+            </value>
+            <value name="EXECUTION_COMPLETE">
+                <description/>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="MarketStatus" type="string">
+        <validValues>
+            <value name="INACTIVE">
+                <description>Inactive Market</description>
+            </value>
+            <value name="OPEN">
+                <description>Open Market</description>
+            </value>
+            <value name="SUSPENDED">
+                <description>Suspended Market</description>
+            </value>
+            <value name="CLOSED">
+                <description>Closed Market</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="RunnerStatus" type="string">
+        <validValues>
+            <value name="ACTIVE">
+                <description>ACTIVE</description>
+            </value>
+            <value name="WINNER">
+                <description>WINNER</description>
+            </value>
+            <value name="LOSER">
+                <description>LOSER</description>
+            </value>
+            <value name="REMOVED_VACANT">
+                <description/>
+            </value>
+            <value name="REMOVED">
+                <description>REMOVED</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="TimeGranularity" type="string">
+        <validValues>
+            <value name="DAYS">
+                <description/>
+            </value>
+            <value name="HOURS">
+                <description/>
+            </value>
+            <value name="MINUTES">
+                <description/>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="MarketType" type="string"/>
+    <simpleType name="Venue" type="string"/>
+    <simpleType name="MarketId" type="string"/>
+    <simpleType name="SelectionId" type="i64"/>
+    <simpleType name="Handicap" type="double"/>
+    <simpleType name="EventId" type="string"/>
+    <simpleType name="EventTypeId" type="string"/>
+    <simpleType name="CountryCode" type="string"/>
+    <simpleType name="ExchangeId" type="string"/>
+    <simpleType name="CompetitionId" type="string"/>
+    <simpleType name="Price" type="double"/>
+    <simpleType name="Size" type="double"/>
+    <simpleType name="BetId" type="string"/>
+    <simpleType name="MatchId" type="string"/>
+
+    <simpleType name="Side" type="string">
+        <validValues>
+            <value name="BACK">
+                <description>To back a team, horse or outcome is to bet on the selection to win.</description>
+            </value>
+            <value name="LAY">
+                <description>To lay a team, horse, or outcome is to bet on the selection to lose.</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="OrderStatus" type="string">
+        <validValues>
+            <value name="EXECUTION_COMPLETE">
+                <description>An order that does not have any remaining unmatched portion.</description>
+            </value>
+            <value name="EXECUTABLE">
+                <description>An order that has a remaining unmatched portion.</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="OrderBy" type="string">
+        <validValues>
+            <value name="BY_BET">
+                <description>@Deprecated Use BY_PLACE_TIME instead. Order by placed time, then bet id.</description>
+            </value>
+            <value name="BY_MARKET">
+                <description>Order by market id, then placed time, then bet id.</description>
+            </value>
+            <value name="BY_PLACE_TIME">
+                <description>Order by placed time, then bet id. This is an alias of to be deprecated BY_BET.
+                </description>
+            </value>
+            <value name="BY_MATCH_TIME">
+                <description>Order by time of last matched fragment (if any), then placed time, then bet id.
+                    Filters out orders which have no matched date
+                </description>
+            </value>
+            <value name="BY_VOID_TIME">
+                <description>Order by time of last voided fragment (if any), then by last match time,
+                    then placed time, then bet id. Filters out orders which have not been voided.
+                </description>
+            </value>
+            <value name="BY_SETTLED_TIME">
+                <description>Order by time of last settled fragment (if any), then by last match time,
+                    then placed time, then bet id. Filters out orders which have not been settled.
+                </description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="SortDir" type="string">
+        <validValues>
+            <value name="EARLIEST_TO_LATEST">
+                <description>Order from earliest value to latest e.g. lowest betId is first in the results.
+                </description>
+            </value>
+            <value name="LATEST_TO_EARLIEST">
+                <description>Order from the latest value to the earliest e.g. highest betId is first in the results.
+                </description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="OrderType" type="string">
+        <validValues>
+            <value name="LIMIT">
+                <description>A normal exchange limit order for immediate execution</description>
+            </value>
+            <value name="LIMIT_ON_CLOSE">
+                <description>Limit order for the auction (SP)</description>
+            </value>
+            <value name="MARKET_ON_CLOSE">
+                <description>Market order for the auction (SP)</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="MarketSort" type="string">
+        <validValues>
+            <value name="MINIMUM_TRADED">
+                <description>Minimum traded volume</description>
+            </value>
+            <value name="MAXIMUM_TRADED">
+                <description>Maximum traded volume</description>
+            </value>
+            <value name="MINIMUM_AVAILABLE">
+                <description>Minimum available to match</description>
+            </value>
+            <value name="MAXIMUM_AVAILABLE">
+                <description>Maximum available to match</description>
+            </value>
+            <value name="FIRST_TO_START">
+                <description>The closest markets based on their expected start time</description>
+            </value>
+            <value name="LAST_TO_START">
+                <description>The most distant markets based on their expected start time</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="MarketBettingType" type="string">
+        <validValues>
+            <value name="ODDS">
+                <description>Odds Market</description>
+            </value>
+            <value name="LINE">
+                <description>Line Market</description>
+            </value>
+            <value name="RANGE">
+                <description>Range Market</description>
+            </value>
+            <value name="ASIAN_HANDICAP_DOUBLE_LINE">
+                <description>Asian Handicap Market</description>
+            </value>
+            <value name="ASIAN_HANDICAP_SINGLE_LINE">
+                <description>Asian Single Line Market</description>
+            </value>
+            <value name="FIXED_ODDS">
+                <description>
+                    Sportsbook Odds Market. This type is deprecated and will be removed
+                    in future releases, when Sportsbook markets will be represented as ODDS market
+                    but with a different product type.
+                </description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <!-- betting simple types -->
+    <simpleType name="ExecutionReportStatus" type="string">
+        <validValues>
+            <value name="SUCCESS">
+                <description/>
+            </value>
+            <value name="FAILURE">
+                <description/>
+            </value>
+            <value name="PROCESSED_WITH_ERRORS">
+                <description/>
+            </value>
+            <value name="TIMEOUT">
+                <description/>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="ExecutionReportErrorCode" type="string">
+        <validValues>
+            <value name="ERROR_IN_MATCHER">
+                <description>The matcher's not healthy</description>
+            </value>
+            <value name="PROCESSED_WITH_ERRORS">
+                <description>The order itself has been accepted, but at least one (possibly all) actions have generated
+                    errors
+                </description>
+            </value>
+            <value name="BET_ACTION_ERROR">
+                <description>There is an error with an action that has caused the entire order to be rejected
+                </description>
+            </value>
+            <value name="INVALID_ACCOUNT_STATE">
+                <description>Order rejected due to the account's status (suspended, inactive, dup cards)</description>
+            </value>
+            <value name="INVALID_WALLET_STATUS">
+                <description>Order rejected due to the account's wallet's status</description>
+            </value>
+            <value name="INSUFFICIENT_FUNDS">
+                <description>Account has exceeded its exposure limit or available to bet limit</description>
+            </value>
+            <value name="LOSS_LIMIT_EXCEEDED">
+                <description>The account has exceed the self imposed loss limit</description>
+            </value>
+            <value name="MARKET_SUSPENDED">
+                <description>Market is suspended</description>
+            </value>
+            <value name="MARKET_NOT_OPEN_FOR_BETTING">
+                <description>Market is not open for betting, either inactive, suspended or closed</description>
+            </value>
+            <value name="DUPLICATE_TRANSACTION">
+                <description>duplicate customer referece data submitted</description>
+            </value>
+            <value name="INVALID_ORDER">
+                <description>
+                    Order cannot be accepted by the matcher due to the combination of actions. For example, bets being
+                    edited are not
+                    on the same market, or order includes both edits and placement
+                </description>
+            </value>
+            <value name="INVALID_MARKET_ID">
+                <description>Market doesn't exist</description>
+            </value>
+            <value name="PERMISSION_DENIED">
+                <description>Business rules do not allow order to be placed</description>
+            </value>
+            <value name="DUPLICATE_BETIDS">
+                <description>duplicate bet ids found</description>
+            </value>
+            <value name="NO_ACTION_REQUIRED">
+                <description>Order hasn't been passed to matcher as system detected there will be no state change
+                </description>
+            </value>
+            <value name="SERVICE_UNAVAILABLE">
+                <description>The requested service is unavailable</description>
+            </value>
+            <value name="REJECTED_BY_REGULATOR">
+                <description>The regulator rejected the order</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="PersistenceType" type="string">
+        <validValues>
+            <value name="LAPSE">
+                <description>Lapse the order at turn-in-play</description>
+            </value>
+            <value name="PERSIST">
+                <description>Persist the order to in-play</description>
+            </value>
+            <value name="MARKET_ON_CLOSE">
+                <description>Put the order into the auction (SP) at turn-in-play</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="InstructionReportStatus" type="string">
+        <validValues>
+            <value name="SUCCESS">
+                <description/>
+            </value>
+            <value name="FAILURE">
+                <description/>
+            </value>
+            <value name="TIMEOUT">
+                <description/>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="InstructionReportErrorCode" type="string">
+        <validValues>
+            <value name="INVALID_BET_SIZE">
+                <description>Bet size is invalid for your currency or your regulator</description>
+            </value>
+            <value name="INVALID_RUNNER">
+                <description>Runner does not exist, includes vacant traps in greyhound racing</description>
+            </value>
+            <value name="BET_TAKEN_OR_LAPSED">
+                <description>
+                    Bet cannot be cancelled or modified as it has already been taken or has lapsed
+                    Includes attempts to cancel/modify market on close BSP bets and cancelling limit on close BSP bets
+                </description>
+            </value>
+            <value name="BET_IN_PROGRESS">
+                <description>No result was received from the matcher in a timeout configured for the system
+                </description>
+            </value>
+            <value name="RUNNER_REMOVED">
+                <description>Runner has been removed from the event</description>
+            </value>
+            <value name="MARKET_NOT_OPEN_FOR_BETTING">
+                <description>Attempt to edit a bet on a market that has closed.</description>
+            </value>
+            <value name="LOSS_LIMIT_EXCEEDED">
+                <description>The action has caused the account to exceed the self imposed loss limit</description>
+            </value>
+            <value name="MARKET_NOT_OPEN_FOR_BSP_BETTING">
+                <description>Market now closed to bsp betting. Turned in-play or has been reconciled</description>
+            </value>
+            <value name="INVALID_PRICE_EDIT">
+                <description>Attempt to edit down the price of a bsp limit on close lay bet, or edit up the price of a
+                    limit on close back bet
+                </description>
+            </value>
+            <value name="INVALID_ODDS">
+                <description>Odds not on price ladder - either edit or placement</description>
+            </value>
+            <value name="INSUFFICIENT_FUNDS">
+                <description>Insufficient funds available to cover the bet action. Either the exposure limit or
+                    available to bet limit would be exceeded
+                </description>
+            </value>
+            <value name="INVALID_PERSISTENCE_TYPE">
+                <description>Invalid persistence type for this market, e.g. KEEP for a non bsp market</description>
+            </value>
+            <value name="ERROR_IN_MATCHER">
+                <description>A problem with the matcher prevented this action completing successfully</description>
+            </value>
+            <value name="INVALID_BACK_LAY_COMBINATION">
+                <description>
+                    The order contains a back and a lay for the same runner at overlapping prices. This would guarantee
+                    a self match.
+                    This also applies to BSP limit on close bets
+                </description>
+            </value>
+            <value name="ERROR_IN_ORDER">
+                <description>The action failed because the parent order failed</description>
+            </value>
+            <value name="INVALID_BID_TYPE">
+                <description>
+                    Bid type is mandatory
+                </description>
+            </value>
+            <value name="INVALID_BET_ID">
+                <description>Bet for id supplied has not been found</description>
+            </value>
+            <value name="CANCELLED_NOT_PLACED">
+                <description>Bet cancelled but replacement bet was not placed</description>
+            </value>
+            <value name="RELATED_ACTION_FAILED">
+                <description>Action failed due to the failure of a action on which this action is dependent
+                </description>
+            </value>
+            <value name="NO_ACTION_REQUIRED">
+                <description>the action does not result in any state change. eg changing a persistence to it's current
+                    value
+                </description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="RollupModel" type="string">
+        <validValues>
+            <value name="STAKE">
+                <description>
+                    The volumes will be rolled up to the minimum value which is >= rollupLimit.
+                </description>
+            </value>
+            <value name="PAYOUT">
+                <description>
+                    The volumes will be rolled up to the minimum value where the payout( price * volume ) is >=
+                    rollupLimit.
+                </description>
+            </value>
+            <value name="MANAGED_LIABILITY">
+                <description>
+                    The volumes will be rolled up to the minimum value which is >= rollupLimit, until a lay price
+                    threshold.
+                    There after, the volumes will be rolled up to the minimum value such that the liability >= a minimum
+                    liability.
+                    Not supported as yet.
+                </description>
+            </value>
+            <value name="NONE">
+                <description>
+                    No rollup will be applied. However the volumes will be filtered by currency specific minimum stake
+                    unless overridden specifically for the channel.
+                </description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="GroupBy" type="string">
+        <validValues>
+            <value name="EVENT_TYPE">
+                <description>A roll up of settled P&amp;L, commission paid and number of bet orders, on a specified
+                    event type
+                </description>
+            </value>
+            <value name="EVENT">
+                <description>A roll up of settled P&amp;L, commission paid and number of bet orders, on a specified
+                    event
+                </description>
+            </value>
+            <value name="MARKET">
+                <description>A roll up of settled P&amp;L, commission paid and number of bet orders, on a specified
+                    market
+                </description>
+            </value>
+            <value name="RUNNER">
+                <description>A roll up of settled P&amp;L and the number of bet orders, on a specified runner within a
+                    specified market
+                </description>
+            </value>
+            <value name="SIDE">
+                <description>An averaged roll up of settled P&amp;L, and number of bets, on the specified side of a
+                    specified selection within a specified market, that are either settled or voided
+                </description>
+            </value>
+            <value name="BET">
+                <description>The P&amp;L, commission paid, side and regulatory information etc, about each individual
+                    bet order
+                </description>
+            </value>
+        </validValues>
+    </simpleType>
+
+    <simpleType name="BetStatus" type="string">
+        <validValues>
+            <value name="SETTLED">
+                <description>A matched bet that was settled normally</description>
+            </value>
+            <value name="VOIDED">
+                <description>A matched bet that was subsequently voided by Betfair, before, during or after settlement
+                </description>
+            </value>
+            <value name="LAPSED">
+                <description>Unmatched bet that was cancelled by Betfair (for example at turn in play).</description>
+            </value>
+            <value name="CANCELLED">
+                <description>Unmatched bet that was cancelled by an explicit customer action.</description>
+            </value>
+        </validValues>
+    </simpleType>
+
+
+</interface>

@@ -1,0 +1,15 @@
+[{
+   "params": {
+      "filter": {}
+   }, 
+   "jsonrpc": "2.0", 
+   "method": "SportsAPING/v1.0/listCountries", 
+   "id": 1
+},{
+   "params": {
+      "filter": {}
+   }, 
+   "jsonrpc": "2.0", 
+   "method": "SportsAPING/v1.0/listEventTypes", 
+   "id": 2
+}]

@@ -1,0 +1,30 @@
+[{
+  "params": {
+    "filter": {
+      "venues": ["York"]
+    },
+    "marketProjection": [
+      "MARKET_DESCRIPTION",
+      "RUNNER_DESCRIPTION",
+      "RUNNER_METADATA"
+    ],
+    "maxResults": 1000
+  }, 
+  "jsonrpc": "2.0", 
+  "method": "SportsAPING/v1.0/listMarketCatalogue", 
+  "id": 1
+},{
+  "params": {
+    "filter": {
+      "venues": ["Haydock"]
+    },
+    "marketProjection": [
+      "MARKET_DESCRIPTION",
+      "RUNNER_METADATA"
+    ],
+    "maxResults": 1000
+  }, 
+  "jsonrpc": "2.0", 
+  "method": "SportsAPING/v1.0/listMarketCatalogue", 
+  "id": 2
+}]
